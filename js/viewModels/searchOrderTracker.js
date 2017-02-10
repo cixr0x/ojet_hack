@@ -12,6 +12,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
     function (oj, ko, $) {
     /**
      * The view model for the main content view template
+     * test
      */
     function searchOrderTrackerContentViewModel() {
         var self = this;
