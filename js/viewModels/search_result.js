@@ -3,24 +3,34 @@
  * The Universal Permissive License (UPL), Version 1.0
  */
 /*
- * Your dashboard ViewModel code goes here
+ * Your incidents ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery'],
+define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojjsontreedatasource', 'ojs/ojbutton'],
  function(oj, ko, $) {
   
-    function DashboardViewModel() {
+    
+    function SearchResultViewModel() {
       var self = this;
-      self.currentStepValue = ko.observable('stp1');
-		this.stepArray = 
-		  ko.observableArray(
-			  [{label:'Step One', id:'stp1'},
-				 {label:'Step Two', id:'stp2'},
-				 {label:'Step Three', id:'stp3'},
-				 {label:'Step Four', id:'stp4'}, 
-				 {label:'Step Five', id:'stp5'}]);
-       this.currentStepValueText = function() {
-		return ($("#train").ojTrain("getStep", self.currentStepValue())).label;
-	};	                       
+      
+      self.dataSource= ko.observableArray([]);
+      self.itemOnly = function(context)
+                    {
+                        return context['leaf'];
+                    };
+      self.selectTemplate = function(file, bindingContext)
+                    {
+                        return bindingContext.$itemContext.leaf ? 'item_template' : 'group_template';
+                    };
+      $.getJSON( "data.json", 
+        function(data) 
+            {
+                console.log("LOS DATA: ");
+                console.log(data);
+                    self.dataSource(new oj.JsonTreeDataSource(data));
+        
+            });
+      
+      
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additionaly available methods.
 
@@ -83,6 +93,6 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new DashboardViewModel();
+    return new SearchResultViewModel();
   }
 );
