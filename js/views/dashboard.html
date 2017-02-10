@@ -13,4 +13,17 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
   </div>
+  <div id="train-container" >
+	<div id="train" class="oj-train-stretch" style="max-width:700px;margin-left:auto;margin-right:auto;"
+	  data-bind="ojComponent:{
+		component: 'ojTrain', 
+		selected: currentStepValue, 
+		steps: stepArray}"></div>
+	<br/>
+	<h3 id="currentStepText"
+		data-bind="text: 'You are on ' + currentStepValueText()" 
+		style="text-align: center">
+	</h3>
+	<br/>
+   </div>
 </div>

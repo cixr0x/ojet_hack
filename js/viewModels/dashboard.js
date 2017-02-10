@@ -10,6 +10,17 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
   
     function DashboardViewModel() {
       var self = this;
+      self.currentStepValue = ko.observable('stp1');
+		this.stepArray = 
+		  ko.observableArray(
+			  [{label:'Step One', id:'stp1'},
+				 {label:'Step Two', id:'stp2'},
+				 {label:'Step Three', id:'stp3'},
+				 {label:'Step Four', id:'stp4'}, 
+				 {label:'Step Five', id:'stp5'}]);
+       this.currentStepValueText = function() {
+		return ($("#train").ojTrain("getStep", self.currentStepValue())).label;
+	};	                       
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additionaly available methods.
 
