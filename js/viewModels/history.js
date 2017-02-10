@@ -7,20 +7,25 @@
 /**
  * history module
  */
-define(['ojs/ojcore', 'knockout'
-], function (oj, ko) {
+define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojtrain', 'ojs/ojbutton', 'ojs/ojtabs', 'ojs/ojconveyorbelt', 'promise', 'ojs/ojlistview'
+], function (oj, ko, $) {
     /**
      * The view model for the main content view template
      */
     function historyContentViewModel() {
-        var self = this;
-        self.firstName = ko.observable("Planet");
-        self.lastName = ko.observable("Earth");
-        self.fullName = ko.pureComputed(function () {
-            return this.firstName() + " " + this.lastName();
-        }, this);
+        var self = this;        
         
         self.historyTitle = ko.observable("Subscription Plan 1000198");
+        self.currentStepValue = ko.observable('stp3');
+        self.stepArray = 
+		  ko.observableArray(
+			  [{label:'Store', id:'stp1', disabled: true,visited: false},
+				 {label:'CPQ', id:'stp2', disabled: true, visited: true},
+				 {label:'OM', id:'stp3', disabled: true, visited: true},
+				 {label:'SPM', id:'stp4', disabled: true}, 
+				 {label:'TAS', id:'stp5', disabled: true}]);
+        			
+        
     }
     
     return historyContentViewModel;

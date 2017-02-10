@@ -24,6 +24,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
          'incidents': {label: 'Incidents'},
          'customers': {label: 'Customers'},
          'about': {label: 'About'},
+         'history': {isDefault: true},
          'searchOrderTracker': {label: 'Search'},
          'search_result': {label: 'search_result',isDefault: true}
        });
