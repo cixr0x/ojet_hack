@@ -5,11 +5,32 @@
 /*
  * Your incidents ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery'],
+define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojjsontreedatasource', 'ojs/ojbutton'],
  function(oj, ko, $) {
   
-    function IncidentsViewModel() {
+    
+    function SearchResultViewModel() {
       var self = this;
+      
+      self.dataSource= ko.observableArray([]);
+      self.itemOnly = function(context)
+                    {
+                        return context['leaf'];
+                    };
+      self.selectTemplate = function(file, bindingContext)
+                    {
+                        return bindingContext.$itemContext.leaf ? 'item_template' : 'group_template';
+                    };
+      $.getJSON( "data.json", 
+        function(data) 
+            {
+                console.log("LOS DATA: ");
+                console.log(data);
+                    self.dataSource(new oj.JsonTreeDataSource(data));
+        
+            });
+      
+      
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additionaly available methods.
 
@@ -72,6 +93,6 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new IncidentsViewModel();
+    return new SearchResultViewModel();
   }
 );
