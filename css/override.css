@@ -1,7 +1,13 @@
-/*
-    Document   : override
-    Created on : <date>
-    Author     : <author>
-    Description:
-        This is where any of your application specific styles should be included
-*/
+.avatar {
+    border-radius: 50%;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+}
+
+.container {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+}
