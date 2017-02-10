@@ -21,6 +21,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
                     {
                         return bindingContext.$itemContext.leaf ? 'item_template' : 'group_template';
                     };
+      
       $.getJSON( "data.json", 
         function(data) 
             {
