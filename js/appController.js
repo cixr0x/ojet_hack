@@ -24,7 +24,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
          'incidents': {label: 'Incidents'},
          'customers': {label: 'Customers'},
          'about': {label: 'About'},
-         'searchOrderTracker': {label: 'Search'}
+         'searchOrderTracker': {label: 'Search'},
+         'search_result': {label: 'search_result'}
        });
       oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
@@ -39,7 +40,9 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
       {name: 'About', id: 'about',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'},
       {name: 'Search', id: 'searchOrderTracker',
-       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-fire-icon-24'}
+       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-fire-icon-24'},
+   {name: 'Search Result', id: 'search_result',
+       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}
       ];
       self.navDataSource = new oj.ArrayTableDataSource(navData, {idAttribute: 'id'});
 
