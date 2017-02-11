@@ -10,7 +10,7 @@
 define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombobox',
     'promise', 'ojs/ojconveyorbelt', 'ojs/ojradioset', 'ojs/ojcollapsible', 
      'ojs/ojbutton',
-    'jqueryui-amd/core', 'jqueryui-amd/effect'], 
+    'jqueryui-amd/core', 'jqueryui-amd/effect', 'ojs/ojtabs'], 
     function (oj, ko, $) {
     /**
      * The view model for the main content view template
