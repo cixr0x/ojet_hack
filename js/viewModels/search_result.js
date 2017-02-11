@@ -45,19 +45,24 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojse
               var subs_plan = [];
               var general = [];
               $.each(data, function(key, value) { 
-                  var obj = {
-                        "id":value.id,
-                        "type": value.type,
-                        "org":  value.org,
-                        "customer": value.customer,
-                        "created": value.created
-                      }
-                  if(value.type === 'oppty'){
-                      opttys.push(obj);
-                  }else if(value.type === 'subscription_plan'){
-                      subs_plan.push(obj);
-                  }else{
-                      general.push(obj);
+                  if(value.id.indexOf(term) !== -1 || value.org.indexOf(term) !== -1
+                          || value.customer.indexOf(term) !== -1){
+                    var obj = {
+                          "id":value.id,
+                          "type": value.type,
+                          "org":  value.org,
+                          "customer": value.customer,
+                          "created": value.created
+                        }
+                    if(value.type === 'oppty'){
+                        opttys.push(obj);
+                    }else if(value.type === 'subscription_plan'){
+                        subs_plan.push(obj);
+                    }else if(value.type === 'invoice'){
+                        invoice.push(obj);
+                    }else{
+                        general.push(obj);
+                    }
                   }
               });
              
