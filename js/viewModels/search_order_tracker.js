@@ -138,7 +138,7 @@ define(['ojs/ojcore', 'knockout', 'jquery','./dao', 'ojs/ojknockout', 'ojs/ojsel
                 this.subName;
                 
                 data.forEach(function(item,index){
-                    if(item.favorite){
+                    if(item.favorite && self.historyTemp){
                         
                         this.subName = typeLabel[item.type] +" "+ item.id;                       
                         this.subLastDate = self.historyTemp[item.id][self.historyTemp[item.id].length-1]["date"];
@@ -147,7 +147,6 @@ define(['ojs/ojcore', 'knockout', 'jquery','./dao', 'ojs/ojknockout', 'ojs/ojsel
                         a.push({"subName":subName,"subLastDate":this.subLastDate,"subLastDescription":this.subLastDescription,"subLastStep":this.subLastStep});
                     }
                 });
-                    console.log(a);
                     self.favAttributes(a); 
                     self.recAttributes(a.reverse());
                 });                                        

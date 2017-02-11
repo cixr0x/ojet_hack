@@ -54,7 +54,7 @@
     "subscription id":"147137",
     "created":"10-Feb-2016",
     "start date":"19-Jan-2017",
-    "favorite":false
+    "favorite":true
   },
   {"type":"oppty", 
     "id":"XYZ1001OPQ",
@@ -86,7 +86,6 @@
   {"type":"order", 
     "id":"9043074",
     "org":"Oracle America",
-    "favorite":true,
     "customer":"Hooli", 
     "booking oppty":"9NASL",
     "subscription id":"1334292",
@@ -95,7 +94,6 @@
   },
   {"type":"order", 
     "id":"9002398",
-    "favorite":true,
     "org":"Oracle America",
     "customer":"Acme Corporation", 
     "booking oppty":"4NTTF",
