@@ -87,4 +87,21 @@ h5
     bottom: 88px;
 }
 
+.itemTitle{
+    text-align: center;
+}
+
+#itemTitleH1{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#favorite{
+    display: inline-block;
+    height: 4em;
+    width: 4em;
+    vertical-align: middle;
+    margin: 1%;
+
+}
 

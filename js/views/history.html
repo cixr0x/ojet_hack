@@ -4,7 +4,19 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<h1 style = "text-align: center" data-bind="text: historyTitle"></h1>
+<div class="itemTitle">
+<h1 id="itemTitleH1" style = "text-align: center" data-bind="text: historyTitle"></h1>
+<div id='favorite' 
+                 data-bind="ojComponent: {
+		  component: 'ojRatingGauge', 
+		  value:isFavorite, 
+                  max:1,
+                  thresholds: [{max: 0, shortDesc: 'Favorite', color: '#aaaaaa'},
+                  {max: 1, shortDesc: 'Unfavorite', color: '#fad55c'}]
+		 }, click: toggleFavorite" 
+                 >
+            </div>
+</div>
 
 <div id="train-container" >
 	<div id="train" class="oj-train-stretch" style="max-width:700px;margin-left:auto;margin-right:auto;"
