@@ -1,20 +1,26 @@
 [
   {"type":"subscription_plan", 
     "id":"10001001",
-    "org":"Americas",
+    "org":"Oracle Americas",
     "customer":"Big Enterprise Inc", 
     "created":"01-Ene-2016"
   },
   {"type":"oppty", 
     "id":"ABC1001",
-    "org":"Americas",
+    "org":"Oracle Americas",
     "customer":"Smart Co", 
     "created":"10-Feb-2016"
   },
   {"type":"oppty", 
     "id":"XYZ1001OPQ",
-    "org":"Americas",
-    "customer":"Smart Co", 
+    "org":"Oracle UK",
+    "customer":"Fun Asociates", 
+    "created":"10-Feb-2016"
+  },
+  {"type":"invoice", 
+    "id":"9001010",
+    "org":"Oracle Colombia",
+    "customer":"Cars Company", 
     "created":"10-Feb-2016"
   }
 ]

@@ -32,7 +32,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
         
             });
       */
-     dao.getSeachResults("A", function(data) 
+     dao.getSeachResults("10", function(data) 
             {
                 console.log("LOS DATA: ");
                 console.log(data);

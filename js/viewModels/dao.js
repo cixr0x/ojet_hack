@@ -9,6 +9,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout'],
   var typeLabel = {};
 typeLabel["subscription_plan"] = "Subscription Plan";
 typeLabel["oppty"] = "Opportunity";
+typeLabel["invoice"] = "Invoice";
 
     
     function daoModel() {
@@ -31,9 +32,10 @@ typeLabel["oppty"] = "Opportunity";
            var itemType = results[b].type;
            console.log("Item type: "+itemType);
            
-           var hItem = {};
+           var hItem = {}; 
                hItem["id"] = results[b].id;
                hItem["customer"] = results[b].customer;
+               hItem["organization"] = results[b].org;
                
                
                
@@ -58,7 +60,8 @@ typeLabel["oppty"] = "Opportunity";
                var child = {};
                child.id = hResults[key][i].id;
                child.name = hResults[key][i].id;
-               child.modified = hResults[key][i].customer;
+               child.customer = hResults[key][i].customer;
+               child.organization = hResults[key][i].organization;
                child.type = key;
                
                var childAttr = {};

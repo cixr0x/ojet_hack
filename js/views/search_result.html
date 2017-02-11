@@ -1,3 +1,8 @@
+
+
+<h1>Search results:</h1>
+
+
 <ul id="listview" aria-label="list using json data" 
        data-bind="ojComponent: {component: 'ojListView', data: dataSource, item: {template: selectTemplate, focusable: itemOnly, selectable: itemOnly}, drillMode: 'collapsible'}">
 </ul>
@@ -15,11 +20,18 @@
                  backgroundRepeat: 'no-repeat', backgroundSize: '40px 40px', minHeight: '40px', minWidth: '40px', maxWidth: '40px' }, attr: { 'aria-label': type }">
             </span>
             <div class="oj-flex-item demo-content">
-                <div>
+                
+              <div class="oj-flex oj-flex-items-pad">
+                  <div class="oj-lg-2 oj-flex-item">
                     <strong data-bind="text: name"></strong>
-                </div>
+                  </div>
+                  <div class="oj-lg-10 oj-flex-item">
+                  <span class="oj-text-xs oj-text-secondary-color" data-bind="text: organization"></span>
+                  </div>
+              </div>
+                
                 <div>
-                    <span class="oj-text-xs oj-text-secondary-color" data-bind="text: 'Last modified on ' + modified"></span>
+                    <span class="oj-text-xs oj-text-secondary-color" data-bind="text: customer"></span>
                 </div>
             </div>
         </div>
