@@ -40,12 +40,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao','ojs/ojknockout', 'ojs/ojtra
                         lastStep=item["step"];
                         steps.push({label:item["step"],id:"stp"+index,disabled: true});
                     }
+                   
                 });
                 var aux = data[id];
                 aux = aux.reverse();
                 self.stepArray(steps);
                 self.currentStepValue(steps[steps.length-1]["id"]);
                 self.items(aux);
+                
             });
         };
         
@@ -63,6 +65,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao','ojs/ojknockout', 'ojs/ojtra
                         name=typeLabel[item["type"]]+" "+item["id"];
                         self.itemNumber = count;
                     }
+                    if(!item["favorite"])
+                    self.isFavorite(0); 
                     count++;
                 });
                     self.attributes(a); 
