@@ -129,19 +129,19 @@ and open the template in the editor.
              </script>  
              
              <div style="display:none" id="actionMenu"
-                    data-bind="ojComponent:{component: 'ojPopup'}">
+                    data-bind="ojComponent:{component: 'ojPopup', rootAttributes: {style: 'background-color: white'}}">
                  <div class="oj-flex oj-sm-flex-direction-column oj-sm-justify-content-center">
                    <ul class="menuError">
                         <li>
                             <button id= "contactTeamButton" class="menuButton"
                                     data-bind="click: contactTeamModal, 
-                                               ojComponent: { component: 'ojButton', label: 'Contact Team' }">
+                                               ojComponent: { component: 'ojButton', label: 'Contact Team',chroming: 'outlined',rootAttributes: {style:'width:10em; margin:0.5em; background-color:#0572ce; color:white'}}">
                             </button>
                         </li>
                         <li>
                             <button id= "openTicketButton" class="menuButton"
                                     data-bind="click: openTicketModal, 
-                                               ojComponent: { component: 'ojButton', label: 'Open Ticket' }">
+                                               ojComponent: { component: 'ojButton', label: 'Open Ticket',chroming: 'outlined',rootAttributes: {style:'width:10em; margin:0.5em; background-color:#0572ce; color:white'} }">
                             </button>
                         </li>
                    </ul>

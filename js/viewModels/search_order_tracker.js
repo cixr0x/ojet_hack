@@ -110,6 +110,48 @@ define(['ojs/ojcore', 'knockout', 'jquery','./dao', 'ojs/ojknockout', 'ojs/ojsel
             //console.log("Testing");
             //console.log(form1);
         };
+        
+        self.favAttributes=ko.observableArray([{"subName":"a","subLastDate":"subLastDate","subLastDescription":"subLastDescription","subLastStep":"subLastStep"}]); 
+        
+        self.historyTemp = null;
+        
+        $.getJSON("js/historyDatasource.json", function(hisData) {     
+            self.historyTemp = hisData;
+        });
+        
+        var typeLabel = {};
+        typeLabel["subscription_plan"] = "Subscription Plan";
+        typeLabel["oppty"] = "Opportunity";
+        typeLabel["invoice"] = "Invoice";
+        typeLabel["order"] = "Order";
+
+
+        
+        self.updateFavorites = function(){            
+            $.getJSON("js/mainDatasource.json", function(data) {         
+                var a = [];
+                var name;
+                this.subLastDate;
+                this.subLastDescription;
+                this.subLastStep;
+                this.subName;
+                
+                data.forEach(function(item,index){
+                    if(item.favorite){
+                        
+                        this.subName = typeLabel[item.type] +" "+ item.id;                       
+                        this.subLastDate = self.historyTemp[item.id][self.historyTemp[item.id].length-1]["date"];
+                            this.subLastDescription = self.historyTemp[item.id][self.historyTemp[item.id].length-1]["description"];
+                            this.subLastStep = self.historyTemp[item.id][self.historyTemp[item.id].length-1]["step"];
+                        a.push({"subName":subName,"subLastDate":this.subLastDate,"subLastDescription":this.subLastDescription,"subLastStep":this.subLastStep});
+                    }
+                });
+                    console.log(a);
+                    self.favAttributes(a); 
+                });                                        
+        };
+        
+        self.updateFavorites();
        
     }
     
