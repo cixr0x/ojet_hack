@@ -16,6 +16,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout'],
         self.typeLabel["oppty"] = "Opportunity";
         self.typeLabel["invoice"] = "Invoice";
         self.typeLabel["order"] = "Order";
+        
 
         this.getSeachResults = function(id, callback){
     
