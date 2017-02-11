@@ -43,34 +43,28 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
          $( "#filter-panel" ).slideToggle();
      };
      
-  
-     self.getValue = function(){
-         
  
-
-     };
-     self.getValue();
      
-     self.loadData = function(id){
-         dao.getSeachResults(id, function(data){
+     //self.loadData = function(id){
+         dao.getSeachResults("10", function(data){
+            
+            /* self.formTest = document.getElementById('searchReturnForm');
+     
+            console.log("inputSearch Value!");
+            console.log(self.formTest);
+            
+            self.formTest.addEventListener('currentIdLabel-changed', function(event){
+                console.log("Ha habido un cambio =o");
+            });   
+            */
             
             console.log(data);
             self.dataSource(new oj.JsonTreeDataSource(data));
             
             
-                 self.formTest = document.getElementById('currentIdLabel');
-     
-            console.log("inputSearch Value!");
-            console.log(self.formTest);
-            
-            self.formTest.addEventListener('changed', function(event){
-                console.log("Ha habido un cambio =o");
-            });   
-            
-            
         });
-     }
-     self.loadData("10");
+    // }
+     //self.loadData("10");
      
  
       
