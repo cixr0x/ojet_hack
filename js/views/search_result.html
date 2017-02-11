@@ -1,4 +1,48 @@
-
+<div id="searchDemo" >
+  <form id="searchForm">
+    <div id="demo-status" style="color: blue"></div>  
+    
+    <input id="inputSearch" placeholder="Universal search..."
+        data-bind="ojComponent: {
+            component: 'ojInputSearch',
+            value:value,           
+            options: suggestions,
+            optionsKeys: {
+              label: 'groupName',
+              children: 'items',
+              childKeys: {
+                label: 'id',
+                value: 'id'
+              }
+            },
+            optionTemplate: 'optionTemplate',
+            rootAttributes: {style:'max-width: 20em;'}}">
+  </form>
+  <!-- Option Template -->
+  <!-- Option Template -->
+  <script type="text/html" id="optionTemplate">
+    <!-- ko if: !$optionContext.leaf -->
+      <div data-bind="text: groupName"></div>
+    <!-- /ko -->
+    <!-- ko if: $optionContext.leaf -->
+      <!-- ko if: !($optionContext.parent.groupId) -->
+        <div data-bind="text: label"></div>
+      <!-- /ko -->
+      <!-- ko if: $optionContext.parent.groupId -->
+        <div>
+          <span class="oj-listbox-highlighter-section">
+            <span data-bind="text: id"></span>, 
+            <span data-bind="text: customer"></span> 
+          </span>
+          <span style="font-size: 0.75rem">
+            <span data-bind="text: org"></span> - 
+            <span data-bind="text: created"></span>
+          </span>  
+        </div>
+      <!-- /ko -->
+    <!-- /ko -->
+  </script>
+</div>
 
 
 

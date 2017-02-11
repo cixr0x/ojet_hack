@@ -5,9 +5,10 @@
 /*
  * Your incidents ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojlistview',
-    'ojs/ojjsontreedatasource', 'ojs/ojbutton', 'ojs/ojselectcombobox', 'ojs/ojdatetimepicker', 'jqueryui-amd/effect',
-'jqueryui-amd/core', 'ojs/ojcomposite', 'jet-composites/search_global/loader'],
+define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojselectcombobox', 
+	'promise', 'ojs/ojconveyorbelt','ojs/ojlistview',
+        'ojs/ojjsontreedatasource', 'ojs/ojbutton', 'ojs/ojdatetimepicker', 
+	'jqueryui-amd/effect', 'jqueryui-amd/core'],
  function(oj, ko, $, dao) {
   
     
@@ -16,6 +17,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
       console.log("DAO : ");
       console.log(dao);
       self.dataSource= ko.observableArray([]);
+      
+      self.value = ko.observable("");
+      
       self.itemOnly = function(context)
                     {
                         return context['leaf'];
@@ -25,15 +29,74 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
                         return bindingContext.$itemContext.leaf ? 'item_template' : 'group_template';
                     };
       
-     /* $.getJSON( "data.json", 
-        function(data) 
-            {
-                console.log("LOS DATA: ");
-                console.log(data);
-                    self.dataSource(new oj.JsonTreeDataSource(data));
-        
+     self.suggestions = function(context) {
+          return new Promise(function(fulfill, reject) {
+
+            var options = [];
+
+            var term = context.term;
+
+            $.getJSON("searchdata.json", function(data) {
+              var opttys = [];
+              var subs_plan = [];
+              var general = [];
+              $.each(data, function(key, value) { 
+                  var obj = {
+                        "id":value.id,
+                        "type": value.type,
+                        "org":  value.org,
+                        "customer": value.customer,
+                        "created": value.created
+                      }
+                  if(value.type === 'oppty'){
+                      opttys.push(obj);
+                  }else if(value.type === 'subscription_plan'){
+                      subs_plan.push(obj);
+                  }else{
+                      general.push(obj);
+                  }
+              });
+             
+              var opportunities = {
+                groupId : "grp:opptys:" + term,
+                groupName : "OPPORTUNITIES",
+                totalResults : opttys.lenght,
+                items : opttys
+              };
+              
+              var subs_planes = {
+                groupId : "grp:subs_plan:" + term,
+                groupName : "SUBSCRIPTIONS PLANS",
+                totalResults : subs_plan.lenght,
+                items : subs_plan
+              };
+              
+              var generals = {
+                groupId : "grp:general:" + term,
+                groupName : "GENERALES",
+                totalResults : general.lenght,
+                items : general
+              };
+              
+              
+              options.push(opportunities);
+              options.push(subs_planes);
+              options.push(generals);
+
+              fulfill(options);
             });
-      */
+          });
+        }
+        
+        $("#demo-status").text("Loading Demo...");
+        
+        $.getJSON( "searchdata.json",
+            function (data) {
+                $("#demo-status").text("");
+            }
+        );
+
+
      self.filterOrg = ko.observableArray([]);
      self.filterDate = ko.observableArray([]);
      

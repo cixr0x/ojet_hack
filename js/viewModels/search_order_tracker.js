@@ -8,10 +8,9 @@
  * searchOrderTracker module
  */
 define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombobox',
-           'promise', 'ojs/ojtabs', 'ojs/ojconveyorbelt', 'ojs/ojradioset', 'ojs/ojcollapsible', 
-           'hammerjs', 'ojs/ojjquery-hammer', 'ojs/ojoffcanvas', 'ojs/ojbutton',
-           'ojs/ojcomposite', 'jet-composites/search_global/loader', 'jqueryui-amd/effect',
-            'jqueryui-amd/core'], 
+    'promise', 'ojs/ojconveyorbelt', 'ojs/ojradioset', 'ojs/ojcollapsible', 
+     'ojs/ojbutton',
+    'jqueryui-amd/core', 'jqueryui-amd/effect'], 
     function (oj, ko, $) {
     /**
      * The view model for the main content view template
