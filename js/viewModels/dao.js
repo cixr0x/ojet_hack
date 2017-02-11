@@ -36,7 +36,7 @@ typeLabel["invoice"] = "Invoice";
                hItem["id"] = results[b].id;
                hItem["customer"] = results[b].customer;
                hItem["organization"] = results[b].org;
-               
+               hItem["created"] = results[b].created;
                
                
            if (hResults.hasOwnProperty(itemType)){    
@@ -62,6 +62,7 @@ typeLabel["invoice"] = "Invoice";
                child.name = hResults[key][i].id;
                child.customer = hResults[key][i].customer;
                child.organization = hResults[key][i].organization;
+               child.created = hResults[key][i].created;
                child.type = key;
                
                var childAttr = {};
