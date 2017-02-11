@@ -109,3 +109,24 @@ h5
     background-color: #30a8ef;
 }
 
+.menuError{
+    padding-left: 0px; 
+    margin: 0px;
+}
+
+.descriptionItem{
+        align-content: center;
+        text-align: center;
+        display: inline-block;
+        width: 15em;
+        border-color: #eeeeee;
+        border-style:  solid;
+        border-width: 1px;
+        padding: 1em;
+        margin: 1em;
+}
+
+.cardTitle{
+    font-weight: bold;
+    font-size: 14px;
+}

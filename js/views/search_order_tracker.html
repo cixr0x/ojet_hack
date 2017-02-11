@@ -65,7 +65,18 @@ and open the template in the editor.
       <p>Tab 1 Content</p>
     </div>
     <div id="tabs-2">
-      <p>Tab 2 Content</p>
+      <!-- ko foreach: favAttributes --> 
+          <div class="container oj-lg-6 oj-md-6 oj-sm-6 descriptionItem" >
+            <div class="oj-lg-12 oj-md-12 oj-sm-12">
+                             <img class= "avatar" data-bind="attr: {src: 'css/images/'+ subLastStep +'.jpg', alt: subLastStep}"></img>
+            </div>
+            <span data-bind="text: subName" class="cardTitle"></span>
+            <br/>            
+            <span data-bind="text: subLastDate"></span>
+            <br/>
+            <span data-bind="text: subLastDescription"></span>
+          </div>           
+      <!-- /ko -->
     </div>
   </div>
 </div>
