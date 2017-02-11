@@ -20,8 +20,8 @@ and open the template in the editor.
               label: 'groupName',
               children: 'items',
               childKeys: {
-                label: 'firstname',
-                value: 'employee_id'
+                label: 'id',
+                value: 'id'
               }
             },
             optionTemplate: 'optionTemplate',
@@ -40,15 +40,66 @@ and open the template in the editor.
       <!-- ko if: $optionContext.parent.groupId -->
         <div>
           <span class="oj-listbox-highlighter-section">
-            <span data-bind="text: firstname"></span>, 
-            <span data-bind="text: lastname"></span> 
+            <span data-bind="text: id"></span>, 
+            <span data-bind="text: customer"></span> 
           </span>
           <span style="font-size: 0.75rem">
-            <span data-bind="text: department_name"></span> - 
-            <span data-bind="text: location_code"></span>
+            <span data-bind="text: org"></span> - 
+            <span data-bind="text: created"></span>
           </span>  
         </div>
       <!-- /ko -->
     <!-- /ko -->
   </script>
+</div>
+
+<div id="parentDiv">
+
+  <!-- outer offcanvas wrapper -->
+  <div class="oj-offcanvas-outer-wrapper" 
+       style="position: absolute;border: 0px solid #d1e6f9; height:200px;bottom: 56px;">
+
+    <!-- start offcanvas -->
+    <div id="drawRecent" 
+         class="oj-offcanvas-start oj-panel oj-panel-alt5" 
+         style="width: 80%; background-color: #f7f7f7;">
+      <div>
+          <h3>Recent tracked orders</h3>
+      </div>
+    </div>
+    
+    <!-- start offcanvas -->
+    <div id="drawFav" 
+         class="oj-offcanvas-start oj-panel oj-panel-alt5" 
+         style="width: 80%; background-color: #f7f7f7;">
+      <div>
+          <h3>Favourites tracked orders</h3>
+      </div>
+    </div>
+
+    <!-- main content -->
+    <div id="mainRecent" style="padding: 90px 10px 30px 10px; height: 10%">
+      <!-- start offcanvas launch button -->
+      <button data-bind="click: toggleDrawRecent,
+                         ojComponent: {component:'ojButton', 
+                         label: 'Recent', 
+                         chroming: 'half',
+                         display: 'text', 
+                         icons: {start: 'oj-fwk-icon-hamburger oj-fwk-icon'}}" >
+      </button>
+    </div>
+    
+    <!-- main content -->
+    <div id="mainFav" style="padding: 10px; height: 10%">
+      <!-- start offcanvas launch button -->
+      <button data-bind="click: toggleDrawFav,
+                         ojComponent: {component:'ojButton', 
+                         label: 'Favourites', 
+                         chroming: 'half',
+                         display: 'text', 
+                         icons: {start: 'oj-fwk-icon-hamburger oj-fwk-icon'}}" >
+      </button>
+    </div>
+
+  </div>
 </div>
