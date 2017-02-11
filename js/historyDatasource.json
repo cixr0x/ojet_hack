@@ -22,13 +22,13 @@
       {"id":8,"step":"TAS","date":"14-Feb-2016","status":"success","description":"Provisioning service"},
       {"id":9,"step":"TAS","date":"15-Feb-2016","status":"success","description":"Provisioning service"},
       {"id":10,"step":"TAS","date":"16-Feb-2016","status":"success","description":"Service provisioned, sent to OM"},
-      {"id":11,"step":"OM","date":"17-Feb-2016","status":"success","description":"Msj sent to SPM"},
-      {"id":12,"step":"SPM","date":"17-Feb-2016","status":"success","description":"Msj received, generating plan, going to queue"},
+      {"id":11,"step":"OM","date":"17-Feb-2016","status":"success","description":"Message sent to SPM"},
+      {"id":12,"step":"SPM","date":"17-Feb-2016","status":"success","description":"Message received, generating plan, going to queue"},
       {"id":13,"step":"SPM","date":"18-Feb-2016","status":"error","description":"Necessary to have an approval, requesting approval, apply on hold status"},
       {"id":14,"step":"SPM","date":"18-Feb-2016","status":"success","description":"Approval providaded. Generating the plan."},
       {"id":15,"step":"SPM","date":"19-Feb-2016","status":"success","description":"Plan generated. Seding message to OIC and MOS"},
       {"id":16,"step":"OIC","date":"19-Feb-2016","status":"success","description":"Message and payloads received"},
-      {"id":17,"step":"OIC","date":"19-Feb-2016","status":"success","description":"Message and payloads received"}
+      {"id":17,"step":"MOS","date":"19-Feb-2016","status":"success","description":"Message and payloads received"}
     ]
   ,
   "10011934":

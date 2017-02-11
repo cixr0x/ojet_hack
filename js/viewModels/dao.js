@@ -25,7 +25,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout'],
     $.getJSON("js/mainDatasource.json", function(data){
        for (a in data){
            var itemId = data[a].id;
-           if (itemId.includes(id)){
+           var upperItem =itemId.toUpperCase();
+           var upperId =id.toUpperCase();
+           if (upperItem.includes(upperId)){
                results.push(data[a]);
            }
        }
