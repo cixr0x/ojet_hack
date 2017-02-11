@@ -18,6 +18,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
     function searchOrderTrackerContentViewModel() {
         var self = this;
         
+        self.value = ko.observable("");
+        
+        self.value.subscribe(function(newval){
+            console.log(newval);
+            
+            //oj.Router.rootInstance.go('search_result');
+            
+            console.log(document.searchResultViewModel);
+            //document.SearchResultViewModel.loadData(newval);
+        });
+        
         self.suggestions = function(context) {
           return new Promise(function(fulfill, reject) {
 

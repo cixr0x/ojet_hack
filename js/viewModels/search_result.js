@@ -7,7 +7,7 @@
  */
 define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojlistview',
     'ojs/ojjsontreedatasource', 'ojs/ojbutton', 'ojs/ojselectcombobox', 'ojs/ojdatetimepicker', 'jqueryui-amd/effect',
-'jqueryui-amd/core'],
+'jqueryui-amd/core', 'ojs/ojcomposite', 'jet-composites/search_global/loader'],
  function(oj, ko, $, dao) {
   
     
@@ -37,16 +37,42 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
      self.filterOrg = ko.observableArray([]);
      self.filterDate = ko.observableArray([]);
      
+     self.currentId = ko.observable("HOLA");
+     
      self.filterButtonClick = function(data, event){
          $( "#filter-panel" ).slideToggle();
      };
-     dao.getSeachResults("10", function(data) 
-            {
-                console.log("LOS DATA: ");
-                console.log(data);
-                    self.dataSource(new oj.JsonTreeDataSource(data));
-        
-            });
+     
+  
+     self.getValue = function(){
+         
+ 
+
+     };
+     self.getValue();
+     
+     self.loadData = function(id){
+         dao.getSeachResults(id, function(data){
+            
+            console.log(data);
+            self.dataSource(new oj.JsonTreeDataSource(data));
+            
+            
+                 self.formTest = document.getElementById('currentIdLabel');
+     
+            console.log("inputSearch Value!");
+            console.log(self.formTest);
+            
+            self.formTest.addEventListener('changed', function(event){
+                console.log("Ha habido un cambio =o");
+            });   
+            
+            
+        });
+     }
+     self.loadData("10");
+     
+ 
       
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additionaly available methods.
@@ -64,6 +90,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
        */
       self.handleActivated = function(info) {
         // Implement if needed
+                  
+    /*formTest.addEventListener( function(event) {
+      console.log("Cambioo wee!");
+    });*/
+   
       };
 
       /**
@@ -90,6 +121,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
        */
       self.handleBindingsApplied = function(info) {
         // Implement if needed
+
       };
 
       /*
@@ -110,6 +142,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new SearchResultViewModel();
+    
+          return new SearchResultViewModel();
   }
 );

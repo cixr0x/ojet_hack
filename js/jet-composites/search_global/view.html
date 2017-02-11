@@ -7,13 +7,14 @@ and open the template in the editor.
 <h1>Introduce an Order identifier</h1>
 
 <div id="searchDemo">
-  <form id="form1">
+  <form id="searchForm">
 
     <div id="demo-status" style="color: blue"></div>  
 
     <label for="inputSearch">Input Search</label>
     <input id="inputSearch" placeholder="Search..."
         data-bind="ojComponent: {
+            value: $props.value,
             component: 'ojInputSearch',
             options: suggestions,
             optionsKeys: {

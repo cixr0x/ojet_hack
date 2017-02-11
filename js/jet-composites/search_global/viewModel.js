@@ -18,6 +18,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
     function model(context) {
         var self = this;
         
+        self.searchValue = ko.observable("");
         self.suggestions = function(context) {
           return new Promise(function(fulfill, reject) {
 

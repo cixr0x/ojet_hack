@@ -1,5 +1,11 @@
 
-
+ <div id="composite-container">
+     <search_global value="{{currentId}}"></search_global>
+ </div>
+     <input id="currentIdLabel" data-bind="value: currentId"/>
+     
+     <demo-contact-form id="form1" first-name="[[firstName]]" last-name="{{lastName}}" email="{{email}}" address="[[address]]">
+    </demo-contact-form>
 <h1>Search results:</h1>
 
 <div id="halfToggleSet" 
@@ -60,7 +66,7 @@
     </div>
 
 <ul id="listview" aria-label="list using json data" 
-       data-bind="ojComponent: {component: 'ojListView', data: dataSource, item: {template: selectTemplate, focusable: itemOnly, selectable: itemOnly}, drillMode: 'collapsible'}">
+       data-bind="ojComponent: {component: 'ojListView', data: dataSource,expanded:'all',  item: {template: selectTemplate, focusable: itemOnly, selectable: itemOnly}, drillMode: 'collapsible'}">
 </ul>
 
 <script type="text/html" id="group_template">
