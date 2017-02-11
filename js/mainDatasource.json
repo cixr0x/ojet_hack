@@ -80,7 +80,8 @@
     "booking oppty":"0SDDY",
     "subscription id":"153928",
     "created":"10-Feb-2016",
-        "favorite":true
+    "favorite":false
+
   }, 
   {"type":"order", 
     "id":"9002398",
@@ -89,7 +90,8 @@
     "customer":"Acme Corporation", 
     "booking oppty":"4NTTF",
     "subscription id":"1419238",
-    "created":"12-Feb-2015"
+    "created":"12-Feb-2015",
+    "favorite":false
   },
   {"type":"order", 
     "id":"9002398",
@@ -98,6 +100,7 @@
     "customer":"Acme Corporation", 
     "booking oppty":"4NTTF",
     "subscription id":"1419238",
-    "created":"12-Feb-2015"
+    "created":"12-Feb-2015",
+    "favorite":false
   }
 ]

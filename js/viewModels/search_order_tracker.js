@@ -7,11 +7,11 @@
 /**
  * searchOrderTracker module
  */
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombobox',
+define(['ojs/ojcore', 'knockout', 'jquery','./dao', 'ojs/ojknockout', 'ojs/ojselectcombobox',
     'promise', 'ojs/ojconveyorbelt', 'ojs/ojradioset', 'ojs/ojcollapsible', 
      'ojs/ojbutton',
     'jqueryui-amd/core', 'jqueryui-amd/effect', 'ojs/ojtabs'], 
-    function (oj, ko, $) {
+    function (oj, ko, $, dao) {
     /**
      * The view model for the main content view template
      * test
@@ -39,62 +39,48 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
             var term = context.term;
 
             $.getJSON("js/mainDatasource.json", function(data) {
-              var opttys = [];
-              var subs_plan = [];
-              var general = [];
-              var invoice = [];
+              
+              var typeArray = {};
+              
+              for (var type in dao.typeLabel){
+                  //console.log(type);
+                  typeArray[type] = [];
+              }
+              
+              
               $.each(data, function(key, value) { 
-                  var obj = {
-                        "id":value.id,
-                        "type": value.type,
-                        "org":  value.org,
-                        "customer": value.customer,
-                        "created": value.created
-                      }
-                  if(value.type === 'oppty'){
-                      opttys.push(obj);
-                  }else if(value.type === 'subscription_plan'){
-                      subs_plan.push(obj);
-                  }else if(value.type === 'invoice'){
-                      invoice.push(obj);
-                  }else{
-                      general.push(obj);
+                   if(value.id.indexOf(term) !== -1 || value.org.indexOf(term) !== -1
+                          || value.customer.indexOf(term) !== -1){
+                    var obj = {
+                          "id":value.id,
+                          "type": value.type,
+                          "org":  value.org,
+                          "customer": value.customer,
+                          "created": value.created
+                        }
+                        
+                    for (var type in dao.typeLabel){
+                  //console.log(type);
+                        if (value.type === type)
+                        typeArray[type].push(obj);
+                    }
+                    
                   }
               });
              
-              var opportunities = {
-                groupId : "grp:opptys:" + term,
-                groupName : "Opportunity",
-                totalResults : opttys.length,
-                items : opttys
-              };
+             var optionArray = {};
               
-              var subs_planes = {
-                groupId : "grp:subs_plan:" + term,
-                groupName : "Subscription Plan",
-                totalResults : subs_plan.length,
-                items : subs_plan
-              };
-              
-              var invoices = {
-                groupId : "grp:invoice:" + term,
-                groupName : "Invoice",
-                totalResults : invoice.length,
-                items : invoice
-              };
-              
-              var generals = {
-                groupId : "grp:general:" + term,
-                groupName : "Other",
-                totalResults : general.length,
-                items : general
-              };
-              
-              
-              options.push(opportunities);
-              options.push(subs_planes);
-              options.push(invoices);
-              options.push(generals);
+              for (var type in dao.typeLabel){
+                  //console.log(type);
+                  optionArray[type] = {
+                     groupId : "grp:"+type+":" + term,
+                        groupName : dao.typeLabel[type],
+                        totalResults : typeArray[type].length,
+                        items : typeArray[type] 
+                  };
+                  if (typeArray[type].length > 0)
+                  options.push(optionArray[type]);
+              }
 
               fulfill(options);
             });

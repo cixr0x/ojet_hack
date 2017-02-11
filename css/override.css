@@ -130,3 +130,14 @@ h5
     font-weight: bold;
     font-size: 14px;
 }
+
+
+#oj-inputsearch-choice-inputSearchMain{
+    height: 3rem;
+    width: 120%;
+    font-size: 1.2rem;
+}
+
+#oj-inputsearch-input-inputSearchMain{
+    font-size: 1.2rem;
+}
