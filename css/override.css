@@ -98,9 +98,9 @@ h5
 
 #favorite{
     display: inline-block;
-    height: 4em;
-    width: 4em;
-    vertical-align: middle;
+    height: 2em;
+    width: 2em;
+    vertical-align: top;
     margin: 1%;
 
 }

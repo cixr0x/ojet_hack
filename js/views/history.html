@@ -7,7 +7,7 @@ and open the template in the editor.
   <form id="searchForm">
     <div id="demo-status" style="color: blue"></div>  
     
-    <input id="inputSearch" placeholder="Universal search..."
+    <input id="inputSearch" placeholder="Cloud search..."
         data-bind="ojComponent: {
             component: 'ojInputSearch',
             value:value,           
@@ -107,13 +107,13 @@ and open the template in the editor.
                          
                          <div class="container oj-lg-10 oj-md-10 oj-sm-8">
                             <div>
-                                <span class = "listTitle" data-bind="text: status.toUpperCase()"></span>
+                                <span class = "listTitle" data-bind="text: description"></span>
                             </div>   
                             <div>
                                 <span class = "listDate" data-bind="text: date"></span></span>
                             </div>
                             <div>
-                                <span data-bind="text: description"></span></span>
+                                <span data-bind="text:status.toUpperCase() "></span></span>
                             </div>                           
                         </div>
                         
