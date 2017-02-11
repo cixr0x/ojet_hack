@@ -109,3 +109,14 @@ h5
     background-color: #30a8ef;
 }
 
+
+
+#oj-inputsearch-choice-inputSearchMain{
+    height: 3rem;
+    width: 120%;
+    font-size: 1.2rem;
+}
+
+#oj-inputsearch-input-inputSearchMain{
+    font-size: 1.2rem;
+}
