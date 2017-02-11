@@ -32,19 +32,20 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao','ojs/ojknockout', 'ojs/ojtra
         
         self.updateSteps=function(){             
             $.getJSON("js/historyDatasource.json", function(data) {
-
                 var lastStep = "";           
                 var steps = [];
-
+                
                 data[id].forEach(function(item,index){
                     if(lastStep!=item["step"]){
                         lastStep=item["step"];
                         steps.push({label:item["step"],id:"stp"+index,disabled: true});
                     }
                 });
+                var aux = data[id];
+                aux = aux.reverse();
                 self.stepArray(steps);
                 self.currentStepValue(steps[steps.length-1]["id"]);
-                self.items(data[id]);
+                self.items(aux);
             });
         };
         

@@ -98,15 +98,15 @@ h5
 
 #favorite{
     display: inline-block;
-    height: 4em;
-    width: 4em;
+    height: 3em;
+    width: 3em;
     vertical-align: middle;
     margin: 1%;
 
 }
 
 .oj-web-applayout-header{
-    background-color: #30a8ef;
+    background-color: #ffffff;
 }
 
 .menuError{
@@ -141,3 +141,18 @@ h5
 #oj-inputsearch-input-inputSearchMain{
     font-size: 1.2rem;
 }
+
+.detailDescriptionItem{
+        display: inline-block;
+        width: 40%;
+}
+
+.demo-oracle-icon {
+  width: 137px;
+  height: 18px;
+}
+.demo-oracle-icon:before {
+  content: url("images/oracle_logo_sm.png");
+  display: inline;
+}
+
