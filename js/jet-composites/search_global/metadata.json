@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "id": {
+      "description": "Id of the component.",
+      "type": "string"
+    }
+  }
+}

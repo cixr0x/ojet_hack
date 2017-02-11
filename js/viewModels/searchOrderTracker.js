@@ -8,7 +8,8 @@
  * searchOrderTracker module
  */
 define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombobox',
-           'promise'], 
+           'promise', 'ojs/ojtabs', 'ojs/ojconveyorbelt', 'ojs/ojradioset', 'ojs/ojcollapsible', 
+           'hammerjs', 'ojs/ojjquery-hammer', 'ojs/ojoffcanvas', 'ojs/ojbutton'], 
     function (oj, ko, $) {
     /**
      * The view model for the main content view template
@@ -24,44 +25,52 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
             var term = context.term;
 
-            $.getJSON("data.json", function(data) {
-              var employees;
-              var managers;
-
-              var groups = data.grouped.isManager.groups;
-              $.each(groups, function(index, group) {
-                if (group.groupValue == 0) {
-                  var emp = {
-                    groupId : "grp:employees:" + term,
-                    groupName : "EMPLOYEES",
-                    totalResults : group.doclist.numFound,
-                    items : group.doclist.docs
-                  };
-                  employees = emp;
-                } else {
-                  var mng = {
-                    groupId : "grp:managers:" + term,
-                    groupName : "MANAGERS",
-                    totalResults : group.doclist.numFound,
-                    items : group.doclist.docs
-                  };
-                 managers = mng;
-                }
-              })
+            $.getJSON("searchdata.json", function(data) {
+              var opttys = [];
+              var subs_plan = [];
+              var general = [];
+              $.each(data, function(key, value) { 
+                  var obj = {
+                        "id":value.id,
+                        "type": value.type,
+                        "org":  value.org,
+                        "customer": value.customer,
+                        "created": value.created
+                      }
+                  if(value.type === 'oppty'){
+                      opttys.push(obj);
+                  }else if(value.type === 'subscription_plan'){
+                      subs_plan.push(obj);
+                  }else{
+                      general.push(obj);
+                  }
+              });
+             
+              var opportunities = {
+                groupId : "grp:opptys:" + term,
+                groupName : "OPPORTUNITIES",
+                totalResults : opttys.lenght,
+                items : opttys
+              };
               
-              var folders;
-              var files;
+              var subs_planes = {
+                groupId : "grp:subs_plan:" + term,
+                groupName : "SUBSCRIPTIONS PLANS",
+                totalResults : subs_plan.lenght,
+                items : subs_plan
+              };
               
-              var isFile = data.attr.id;
+              var generals = {
+                groupId : "grp:general:" + term,
+                groupName : "GENERALES",
+                totalResults : general.lenght,
+                items : general
+              };
               
               
-              
-              
-                
-              ;
-
-              options.push(employees);
-              options.push(managers);
+              options.push(opportunities);
+              options.push(subs_planes);
+              options.push(generals);
 
               fulfill(options);
             });
@@ -70,18 +79,90 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         
         $("#demo-status").text("Loading Demo...");
         
-        $.getJSON( "data.json",
+        $.getJSON( "searchdata.json",
             function (data) {
-                console.log("LOS DATA: ");
-                console.log(data);
-                
-                //new MockSolrServer(data, {url:/^http:\/\/mocksolr\/collection\/select.*/i});
-                
-                 //ko.applyBindings(new SearchModel(), document.getElementById('form1'));
-                 
-                 $("#demo-status").text("");
+                $("#demo-status").text("");
             }
         );
+
+
+
+        //OFFCANVAS FUNCTIONALITY
+        this.drawRecent =
+        {
+          "displayMode": "push",
+          "selector": "#drawRecent",
+          "content": "#mainRecent"
+        };
+      
+        this.toggleDrawRecent = function()
+        {
+          return oj.OffcanvasUtils.toggle(this.drawRecent);
+        };
+
+        this.openDrawRecent = function()
+        {
+          return oj.OffcanvasUtils.open(this.drawRecent);
+        };
+
+        this.isRTL = function()
+        {
+          var dir = document.documentElement.getAttribute("dir");
+          if (dir)
+            dir = dir.toLowerCase();
+          return (dir === "rtl");
+        };
+
+        //use hammer for swipe
+        var mOptions = {
+          "recognizers": [
+            [Hammer.Swipe, { "direction": Hammer["DIRECTION_UP"] }]
+        ]};
+ 
+        $("#main")
+          .ojHammer(mOptions)
+          .on("swipeleft", function(event) {
+            event.preventDefault();
+            if (self.isRTL())
+              self.openDrawRecent();
+          })
+          .on("swiperight", function(event) {
+            event.preventDefault();
+            if (! self.isRTL())
+              self.openDrawRecent();
+          });
+      
+      
+       this.drawFav =
+       {
+         "displayMode": "push",
+         "selector": "#drawFav",
+         "content": "#mainFav"
+       };
+      
+       this.toggleDrawFav = function()
+       {
+         return oj.OffcanvasUtils.toggle(this.drawFav);
+       };
+
+        this.openDrawFav = function()
+        {
+          return oj.OffcanvasUtils.open(this.drawFav);
+        };
+      
+        $("#main2")
+          .ojHammer(mOptions)
+          .on("swipeleft", function(event) {
+            event.preventDefault();
+            if (self.isRTL())
+              self.openDrawFav();
+          })
+          .on("swiperight", function(event) {
+            event.preventDefault();
+            if (! self.isRTL())
+              self.openDrawFav();
+          });
+       
     }
     
     return searchOrderTrackerContentViewModel;
