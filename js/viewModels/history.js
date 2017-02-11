@@ -7,9 +7,9 @@
 /**
  * history module
  */
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojtrain', 'ojs/ojbutton', 'ojs/ojtabs', 
+define(['ojs/ojcore', 'knockout', 'jquery', './dao','ojs/ojknockout', 'ojs/ojtrain', 'ojs/ojbutton', 'ojs/ojtabs', 
     'ojs/ojconveyorbelt', 'promise', 'ojs/ojlistview', 'ojs/ojarraytabledatasource', 'ojs/ojpopup', 'ojs/ojdialog', 'ojs/ojinputtext', 'ojs/ojgauge'
-], function (oj, ko, $) {
+], function (oj, ko, $, dao) {
     /**
      * The view model for the main content view template
      */
@@ -17,10 +17,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojtrain', 'oj
         var self = this;        
         var id = localStorage.getItem("detailVal");
         
-        var typeLabel = {};
-        typeLabel["subscription_plan"] = "Subscription Plan";
-        typeLabel["oppty"] = "Opportunity";
-        typeLabel["invoice"] = "Invoice";
+        var typeLabel = dao.typeLabel;
                      
         self.historyTitle = ko.observable("Subscription Plan 1000198");
         self.currentStepValue = ko.observable('stp3');

@@ -6,15 +6,17 @@
 
 define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout'],
  function(oj, ko, $) {
-  var typeLabel = {};
-typeLabel["subscription_plan"] = "Subscription Plan";
-typeLabel["oppty"] = "Opportunity";
-typeLabel["invoice"] = "Invoice";
+
 
     
     function daoModel() {
-        
-        
+        var self =this;
+         self.typeLabel = {};
+        self.typeLabel["subscription_plan"] = "Subscription Plan";
+        self.typeLabel["oppty"] = "Opportunity";
+        self.typeLabel["invoice"] = "Invoice";
+        self.typeLabel["order"] = "Order";
+
         this.getSeachResults = function(id, callback){
     
     console.log("Im in  =3");
@@ -69,8 +71,8 @@ typeLabel["invoice"] = "Invoice";
                childAttr.attr =  child;
                entry.children.push(childAttr);
            }
-           
-           entry.attr.name = typeLabel[key] + " ("+entry.children.length+")";
+           console.log(self.typeLabel);
+           entry.attr.name = self.typeLabel[key] + " ("+entry.children.length+")";
            
            resultArray.push(entry);
        }
