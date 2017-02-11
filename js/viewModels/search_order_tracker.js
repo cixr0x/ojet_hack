@@ -9,7 +9,9 @@
  */
 define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombobox',
            'promise', 'ojs/ojtabs', 'ojs/ojconveyorbelt', 'ojs/ojradioset', 'ojs/ojcollapsible', 
-           'hammerjs', 'ojs/ojjquery-hammer', 'ojs/ojoffcanvas', 'ojs/ojbutton'], 
+           'hammerjs', 'ojs/ojjquery-hammer', 'ojs/ojoffcanvas', 'ojs/ojbutton',
+           'ojs/ojcomposite', 'jet-composites/search_global/loader', 'jqueryui-amd/effect',
+            'jqueryui-amd/core'], 
     function (oj, ko, $) {
     /**
      * The view model for the main content view template
@@ -96,83 +98,21 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
             }
         );
 
-
-
-        //OFFCANVAS FUNCTIONALITY
-        this.drawRecent =
-        {
-          "displayMode": "push",
-          "selector": "#drawRecent",
-          "content": "#mainRecent"
+        self.filterButtonClick = function(data, event){
+            $( "#recent-panel" ).slideToggle();
         };
-      
-        this.toggleDrawRecent = function()
-        {
-          return oj.OffcanvasUtils.toggle(this.drawRecent);
+        
+        self.filterButtonClick = function(data, event){
+            $( "#fav-panel" ).slideToggle();
         };
-
-        this.openDrawRecent = function()
-        {
-          return oj.OffcanvasUtils.open(this.drawRecent);
+        
+        self.handleBindingsApplied = function(info) {
+            // Property change listeners for one-way data bound attributes.
+            // Property change events will fire even when attribute expressions become disconnected
+            var form1 = document.getElementById('inputSearch');
+            console.log("Testing");
+            console.log(form1);
         };
-
-        this.isRTL = function()
-        {
-          var dir = document.documentElement.getAttribute("dir");
-          if (dir)
-            dir = dir.toLowerCase();
-          return (dir === "rtl");
-        };
-
-        //use hammer for swipe
-        var mOptions = {
-          "recognizers": [
-            [Hammer.Swipe, { "direction": Hammer["DIRECTION_UP"] }]
-        ]};
- 
-        $("#main")
-          .ojHammer(mOptions)
-          .on("swipeleft", function(event) {
-            event.preventDefault();
-            if (self.isRTL())
-              self.openDrawRecent();
-          })
-          .on("swiperight", function(event) {
-            event.preventDefault();
-            if (! self.isRTL())
-              self.openDrawRecent();
-          });
-      
-      
-       this.drawFav =
-       {
-         "displayMode": "push",
-         "selector": "#drawFav",
-         "content": "#mainFav"
-       };
-      
-       this.toggleDrawFav = function()
-       {
-         return oj.OffcanvasUtils.toggle(this.drawFav);
-       };
-
-        this.openDrawFav = function()
-        {
-          return oj.OffcanvasUtils.open(this.drawFav);
-        };
-      
-        $("#main2")
-          .ojHammer(mOptions)
-          .on("swipeleft", function(event) {
-            event.preventDefault();
-            if (self.isRTL())
-              self.openDrawFav();
-          })
-          .on("swiperight", function(event) {
-            event.preventDefault();
-            if (! self.isRTL())
-              self.openDrawFav();
-          });
        
     }
     
