@@ -22,7 +22,7 @@
     color: #454545;
 }
 
-#halfToggleSet{
+#RecentToggleSet{
     position: absolute;
     left: 0px;
     bottom: 52px;
@@ -46,14 +46,3 @@
     bottom: 88px;
 }
 
-.inputSearchData{
-    width: 30em;
-    height: 50px;
-    font-size: x-large;
-}
-
-#oj-inputsearch-input-inputSearch35{
-    width: 30em;
-    height: 50px;
-    font-size: x-large;
-}

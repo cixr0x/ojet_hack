@@ -109,9 +109,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         self.handleBindingsApplied = function(info) {
             // Property change listeners for one-way data bound attributes.
             // Property change events will fire even when attribute expressions become disconnected
-            var form1 = document.getElementById('inputSearch');
-            console.log("Testing");
-            console.log(form1);
+            //var form1 = document.getElementById('inputSearch');
+            //console.log("Testing");
+            //console.log(form1);
         };
        
     }
