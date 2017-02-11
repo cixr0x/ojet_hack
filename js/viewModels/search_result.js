@@ -5,7 +5,9 @@
 /*
  * Your incidents ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojjsontreedatasource', 'ojs/ojbutton'],
+define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojlistview',
+    'ojs/ojjsontreedatasource', 'ojs/ojbutton', 'ojs/ojselectcombobox', 'ojs/ojdatetimepicker', 'jqueryui-amd/effect',
+'jqueryui-amd/core'],
  function(oj, ko, $, dao) {
   
     
@@ -32,6 +34,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
         
             });
       */
+     self.filterOrg = ko.observableArray([]);
+     self.filterDate = ko.observableArray([]);
+     
+     self.filterButtonClick = function(data, event){
+         $( "#filter-panel" ).slideToggle();
+     };
      dao.getSeachResults("10", function(data) 
             {
                 console.log("LOS DATA: ");
