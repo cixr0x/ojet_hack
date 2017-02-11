@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "id": {
+      "description": "Id of the component.",
+      "type": "string"
+    },
+    "value": {
+      "description": "Id of the component.",
+      "type": "string",
+      "writeback": true
+    }
+  }
+}

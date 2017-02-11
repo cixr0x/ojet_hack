@@ -5,13 +5,16 @@
 /*
  * Your incidents ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojjsontreedatasource', 'ojs/ojbutton'],
- function(oj, ko, $) {
+define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojlistview',
+    'ojs/ojjsontreedatasource', 'ojs/ojbutton', 'ojs/ojselectcombobox', 'ojs/ojdatetimepicker', 'jqueryui-amd/effect',
+'jqueryui-amd/core', 'ojs/ojcomposite', 'jet-composites/search_global/loader'],
+ function(oj, ko, $, dao) {
   
     
     function SearchResultViewModel() {
       var self = this;
-      
+      console.log("DAO : ");
+      console.log(dao);
       self.dataSource= ko.observableArray([]);
       self.itemOnly = function(context)
                     {
@@ -22,7 +25,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
                         return bindingContext.$itemContext.leaf ? 'item_template' : 'group_template';
                     };
       
-      $.getJSON( "data.json", 
+     /* $.getJSON( "data.json", 
         function(data) 
             {
                 console.log("LOS DATA: ");
@@ -30,7 +33,40 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
                     self.dataSource(new oj.JsonTreeDataSource(data));
         
             });
-      
+      */
+     self.filterOrg = ko.observableArray([]);
+     self.filterDate = ko.observableArray([]);
+     
+     self.currentId = ko.observable("HOLA");
+     
+     self.filterButtonClick = function(data, event){
+         $( "#filter-panel" ).slideToggle();
+     };
+     
+ 
+     
+     self.loadData = function(id){
+         dao.getSeachResults(id, function(data){
+            console.log("ya llegamos y el valor  es" +id);
+            /* self.formTest = document.getElementById('searchReturnForm');
+     
+            console.log("inputSearch Value!");
+            console.log(self.formTest);
+            
+            self.formTest.addEventListener('currentIdLabel-changed', function(event){
+                console.log("Ha habido un cambio =o");
+            });   
+            */
+            
+            console.log(data);
+            self.dataSource(new oj.JsonTreeDataSource(data));
+            
+            
+        });
+     }
+     self.loadData(localStorage.getItem("searchVal"));
+     
+ 
       
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additionaly available methods.
@@ -48,6 +84,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
        */
       self.handleActivated = function(info) {
         // Implement if needed
+                  
+    /*formTest.addEventListener( function(event) {
+      console.log("Cambioo wee!");
+    });*/
+   
       };
 
       /**
@@ -74,6 +115,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
        */
       self.handleBindingsApplied = function(info) {
         // Implement if needed
+
       };
 
       /*
@@ -94,6 +136,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new SearchResultViewModel();
+    
+          return new SearchResultViewModel();
   }
 );
