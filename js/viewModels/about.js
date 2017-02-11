@@ -5,7 +5,7 @@
 /*
  * Your about ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery'],
+define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojcomposite', 'jet-composites/search_global/loader'],
  function(oj, ko, $) {
   
     function AboutViewModel() {
