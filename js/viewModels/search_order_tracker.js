@@ -111,7 +111,8 @@ define(['ojs/ojcore', 'knockout', 'jquery','./dao', 'ojs/ojknockout', 'ojs/ojsel
             //console.log(form1);
         };
         
-        self.favAttributes=ko.observableArray([{"subName":"a","subLastDate":"subLastDate","subLastDescription":"subLastDescription","subLastStep":"subLastStep"}]); 
+        self.favAttributes=ko.observableArray([{"subName":"a","subLastDate":"subLastDate","subLastDescription":"subLastDescription","subLastStep":"SPM"}]); 
+        self.recAttributes=ko.observableArray([{"subName":"a","subLastDate":"subLastDate","subLastDescription":"subLastDescription","subLastStep":"SPM"}]); 
         
         self.historyTemp = null;
         
@@ -148,6 +149,7 @@ define(['ojs/ojcore', 'knockout', 'jquery','./dao', 'ojs/ojknockout', 'ojs/ojsel
                 });
                     console.log(a);
                     self.favAttributes(a); 
+                    self.recAttributes(a.reverse());
                 });                                        
         };
         
