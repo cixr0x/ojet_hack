@@ -25,8 +25,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
          'customers': {label: 'Customers'},
          'about': {label: 'About'},
          'history': { },
-         'searchOrderTracker': {label: 'Search'},
-         'search_result': {label: 'search_result',isDefault:true}
+         'search_order_tracker': {label: 'Search',isDefault:true},
+         'search_result': {label: 'search_result'}
        });
       oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
@@ -40,7 +40,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'},
       {name: 'About', id: 'about',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'},
-      {name: 'Search', id: 'searchOrderTracker',
+      {name: 'Search', id: 'search_order_tracker',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-fire-icon-24'},
    {name: 'Search Result', id: 'search_result',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}

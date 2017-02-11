@@ -1,0 +1,41 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div style="width:30em; margin:10em auto;">
+    
+    <div id="composite-container"  class="inputSearchData">
+         <search_global></search_global>
+     </div>
+</div>
+
+<!-- Recent tracked orders -->
+<div id="halfToggleSet" class="bottomButtons"
+        data-bind="ojComponent: {component: 'ojButtonset',
+        chroming: 'outlined'}">
+    <label for="recent_tracked_orders">Recent tracked orders</label>
+    <input  type="checkbox" id="recent_tracked_orders" value="toggle"
+           data-bind=" ojComponent: {
+               component: 'ojButton',  
+               icons: {start:'fa fa-filter'}
+           }" onclick="$( '#recent-panel' ).slideToggle();"/>
+</div>
+<div style="display:none;" id="recent-panel" class="oj-panel demo-mypanel bottomInfoDiv">
+   <h3>Recent tracked orders</h3>
+</div>
+
+<!-- Favourites tracked orders-->
+<div id="favToggleSet" class="bottomButtons"
+        data-bind="ojComponent: {component: 'ojButtonset',
+        chroming: 'outlined'}">
+    <label for="fav_tracked_orders">Fav tracked orders</label>
+    <input  type="checkbox" id="fav_tracked_orders" value="toggle"
+           data-bind=" ojComponent: {
+               component: 'ojButton',  
+               icons: {start:'fa fa-filter'}
+           }" onclick="$( '#fav-panel' ).slideToggle();"/>
+</div>
+<div style="display:none;" id="fav-panel" class="oj-panel demo-mypanel bottomInfoDiv">
+   <h3>Favourites tracked orders</h3>
+</div>

@@ -21,3 +21,39 @@
 .data {
     color: #454545;
 }
+
+#halfToggleSet{
+    position: absolute;
+    left: 0px;
+    bottom: 52px;
+}
+
+#favToggleSet{
+    position: absolute;
+    left: 175px;
+    bottom: 52px;
+}
+
+#fav-panel{
+    position: absolute;
+    left: 175px;
+    bottom: 88px;
+}
+
+.bottomInfoDiv{
+    position: absolute;
+    left: 0px;
+    bottom: 88px;
+}
+
+.inputSearchData{
+    width: 30em;
+    height: 50px;
+    font-size: x-large;
+}
+
+#oj-inputsearch-input-inputSearch35{
+    width: 30em;
+    height: 50px;
+    font-size: x-large;
+}
