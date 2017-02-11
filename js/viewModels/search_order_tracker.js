@@ -24,8 +24,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         
         self.value.subscribe(function(newval){
             console.log(newval);
-            
-            //oj.Router.rootInstance.go('search_result');
+            localStorage.setItem("searchVal", newval);
+            console.log("el valor  es" +localStorage.getItem("searchVal"));
+            oj.Router.rootInstance.go('search_result');
             
             console.log(document.searchResultViewModel);
             //document.SearchResultViewModel.loadData(newval);

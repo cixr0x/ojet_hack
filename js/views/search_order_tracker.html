@@ -11,7 +11,9 @@ and open the template in the editor.
     
     <input id="inputSearch" style="height: 70px; font-size: x-large" placeholder="Universal search..."
         data-bind="ojComponent: {
+            
             component: 'ojInputSearch',
+            value:value,
             options: suggestions,
             optionsKeys: {
               label: 'groupName',

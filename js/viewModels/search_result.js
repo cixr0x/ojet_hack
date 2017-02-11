@@ -45,9 +45,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
      
  
      
-     //self.loadData = function(id){
-         dao.getSeachResults("10", function(data){
-            
+     self.loadData = function(id){
+         dao.getSeachResults(id, function(data){
+            console.log("ya llegamos y el valor  es" +id);
             /* self.formTest = document.getElementById('searchReturnForm');
      
             console.log("inputSearch Value!");
@@ -63,8 +63,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
             
             
         });
-    // }
-     //self.loadData("10");
+     }
+     self.loadData(localStorage.getItem("searchVal"));
      
  
       
