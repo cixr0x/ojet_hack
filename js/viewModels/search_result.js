@@ -63,9 +63,19 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojli
             
             
         });
-     }
+     };
      self.loadData(localStorage.getItem("searchVal"));
      
+     self.toDetail = function(event, data){
+         console.log(event);
+         console.log(data);
+            localStorage.setItem("detailVal", event.id);
+            console.log("el valor  es" +localStorage.getItem("detailVal"));
+            oj.Router.rootInstance.go('history');
+            
+            console.log(document.searchResultViewModel);
+     }
+ 
  
       
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
