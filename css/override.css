@@ -1,13 +1,53 @@
 .avatar {
     border-radius: 50%;
     background-size: 35px 35px;
-    width: 35px;
-    height: 35px;
+    width: 4em;
+    height: 4em;
     display: inline-block;
 }
 
 .container {
     display: inline-block;
-    margin: 0 10px;
     vertical-align: top;
+}
+
+.listTitle{
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.listDate{
+    font-style: italic;
+}
+
+.tabsContainer{
+    width: 60%;
+    margin-left: 20%;
+}
+
+.statusButton{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.menuError{
+    list-style: none;
+}
+
+h5
+{
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.descriptionItem{
+    display: inline;
+}
+
+#train-container{
+    margin: 5%;
 }

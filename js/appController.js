@@ -26,7 +26,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
          'about': {label: 'About'},
          'history': {isDefault: true},
          'searchOrderTracker': {label: 'Search'},
-         'search_result': {label: 'search_result',isDefault: true}
+         'search_result': {label: 'search_result'}
        });
       oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 

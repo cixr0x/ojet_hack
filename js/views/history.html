@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<h1 data-bind="text: historyTitle"></h1>
+<h1 style = "text-align: center" data-bind="text: historyTitle"></h1>
 
 <div id="train-container" >
 	<div id="train" class="oj-train-stretch" style="max-width:700px;margin-left:auto;margin-right:auto;"
@@ -15,7 +15,7 @@ and open the template in the editor.
 	<br/>
 </div>
 
-<div id="tabs-container">
+<div class="tabsContainer" id="tabs-container">
   <div id="tabs" data-bind="ojComponent:{component: 'ojTabs'}">
     <!-- tab bar -->
     <ul>
@@ -35,34 +35,117 @@ and open the template in the editor.
 
           <!-- tab contents -->
           <div id="tabs-1">
-            <ul id="listview" aria-label="list with static data" 
-             data-bind="ojComponent: {component: 'ojListView', selectionMode: 'multiple'}">
-          <li id="amybartlet">
-              <span class="avatar" style="background-image: url('css/images/store.jpg')"></span>
-              <div class="container">
-                  <div>
-                      <span class="name">Amy Bartlet</span>
-                  </div>
-                  <div>
-                      <span class="oj-text-xs oj-text-secondary-color">Vice President</span>
-                  </div>
-              </div>
-          </li>
-          <li id="andyjones">
-              <span class="avatar" style="background-image: url('css/images/CPQ.jpg')"></span>
-              <div class="container">
-                  <div>
-                      <span class="name">Andy Jones</span>
-                  </div>
-                  <div>
-                      <span class="oj-text-xs oj-text-secondary-color">Director</span>
-                  </div>
-              </div>
-          </li>
-      </ul>
-    </div>
+            
+              
+            <ul id="listview" aria-label="list using array" 
+                    data-bind="ojComponent: {component: 'ojListView', data: dataSource, item: {template: 'server_template'}, selectionMode: 'none'}">
+             </ul>
+
+             <script type="text/html" id="server_template">
+                 <li data-bind="attr: {id: $data['id']}">
+                     <div class="oj-flex">
+                         <div class="oj-lg-1 oj-md-1 oj-sm-12">
+                             <img class= "avatar" data-bind="attr: {src: 'css/images/'+ step +'.jpg', alt: step}"></img>
+                         </div>
+                         
+                         <div class="container oj-lg-10 oj-md-10 oj-sm-8">
+                            <div>
+                                <span class = "listTitle" data-bind="text: status.toUpperCase()"></span>
+                            </div>   
+                            <div>
+                                <span class = "listDate" data-bind="text: date"></span></span>
+                            </div>
+                            <div>
+                                <span data-bind="text: description"></span></span>
+                            </div>                           
+                        </div>
+                        
+                        <div class="container oj-lg-1 oj-md-1 oj-sm-4">
+                            <br/>
+                            <button title=".oj-fwk-icon-caret-n" role="img"
+                                data-bind="css: status == 'success' ? 'oj-fwk-icon-status-confirmation' : 'oj-fwk-icon-status-error', click: function(data){ $parent.loadMenu(data);}" class="oj-fwk-icon statusButton">
+                            </button>
+                            <br/>
+                        </div>                                                                                            
+                     </div>
+                 </li>
+             </script>  
+             
+             <div style="display:none" id="actionMenu"
+                    data-bind="ojComponent:{component: 'ojPopup'}">
+                 <div class="oj-flex oj-sm-flex-direction-column oj-sm-justify-content-center">
+                   <ul class="menuError">
+                        <li>
+                            <button id= "contactTeamButton"
+                                    data-bind="click: contactTeamModal, 
+                                               ojComponent: { component: 'ojButton', label: 'Contact Team' }">
+                            </button>
+                        </li>
+                        <li>
+                            <button id= "openTicketButton"
+                                    data-bind="click: openTicketModal, 
+                                               ojComponent: { component: 'ojButton', label: 'Open Ticket' }">
+                            </button>
+                        </li>
+                   </ul>
+                 </div>
+            </div>
+             
+            <div style="display:none" id="contactTeamDialog" title="" data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', modality: 'modeless'}">
+                <!-- Note: the user must provide the aria-labelledby attribute for the dialog to be accessible -->
+                <div class="oj-dialog-header oj-helper-clearfix" aria-labelledby="dialogContactTitleId">
+                   <span id="dialogContactTitleId" class="oj-dialog-title"> Contact Team </span> 
+                </div>
+                <div class="oj-dialog-body">
+                   <label for="subject-input">Subject:</label>
+                    <input id="subject-input" 
+                           type="text"
+                           data-bind="ojComponent: {component: 'ojInputText'}"/>
+                    <label for="subject-input">CC:</label>
+                    <input id="subject-input" 
+                           type="text"
+                           data-bind="ojComponent: {component: 'ojInputText'}"/>
+                    <label for="subject-input">Message:</label>
+                    <input id="message-input" 
+                           type="text"
+                           data-bind="ojComponent: {component: 'ojInputText'}"/>
+                </div>
+                <div class="oj-dialog-footer">
+                   <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'Send'}, click: contactTeamModalClose"> </button>
+                </div>
+             </div>
+             
+             <div style="display:none" id="openTicketDialog" title="" data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', modality: 'modeless'}">
+                <!-- Note: the user must provide the aria-labelledby attribute for the dialog to be accessible -->
+                <div class="oj-dialog-header oj-helper-clearfix" aria-labelledby="dialogContactTitleId">
+                   <span id="dialogContactTitleId" class="oj-dialog-title"> Open Ticket </span> 
+                </div>
+                <div class="oj-dialog-body">
+                   <label for="subject-input">Product ID:</label>
+                    <input id="subject-input" 
+                           type="text"
+                           data-bind="ojComponent: {component: 'ojInputText'}"/>
+                    <label for="subject-input">Version:</label>
+                    <input id="subject-input" 
+                           type="text"
+                           data-bind="ojComponent: {component: 'ojInputText'}"/>
+                    <label for="subject-input">Bug Description:</label>
+                    <input id="message-input" 
+                           type="text"
+                           data-bind="ojComponent: {component: 'ojInputText'}"/>
+                </div>
+                <div class="oj-dialog-footer">
+                   <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'Create'}, click: openTicketModalClose"> </button>
+                </div>
+             </div>           
+          </div>
     <div id="tabs-2">
-      <p>Tab 2 Content</p>
+          <!-- ko foreach: attributes --> 
+          <div class="container oj-lg-6 oj-md-6 oj-sm-6 descriptionItem" >
+            <h5 data-bind="text: label"></h5>
+            <span data-bind="text: value"></span>
+          </div>           
+          <!-- /ko -->
     </div>
   </div>
 </div>

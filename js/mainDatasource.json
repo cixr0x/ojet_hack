@@ -1,20 +1,35 @@
 [
-  {"type":"subscription_plan", 
+  {"type":"Subscription Plan", 
     "id":"10001001",
-    "org":"Americas",
+    "subscription type":"Cloud Evergreen Subscription",
+    "plan name":"US:STORE CLOUD SERVICES_38283737_E",
+    "plan number":"10015989",
+    "plan classification":"Standard",
+    "agreement date":"24-Dec-2015",
+    "organization":"Americas",
     "customer":"Big Enterprise Inc", 
-    "created":"01-Ene-2016"
+    "created":"01-Ene-2016",
+    "start date":"19-Ene-2016",
+    "favorite":true
   },
-  {"type":"oppty", 
+  {"type":"Oppty", 
     "id":"ABC1001",
-    "org":"Americas",
+    "subscription type":"Cloud Renewable Subscription",
+    "organization":"Americas",
+    "agreement date":"10-Feb-2016",
     "customer":"Smart Co", 
-    "created":"10-Feb-2016"
+    "created":"10-Feb-2016",
+    "start date":"19-Ene-2017",
+    "favorite":false
   },
-  {"type":"oppty", 
+  {"type":"Oppty", 
     "id":"XYZ1001OPQ",
-    "org":"Americas",
+    "subscription type":"Cloud Evergreen Subscription",
+    "organization":"Americas",
     "customer":"Smart Co", 
-    "created":"10-Feb-2016"
+    "agreement date":"9-Mar-2015",
+    "start date":"19-Ene-2016",
+    "created":"29-Feb-2017",
+    "favorite":true
   }
 ]
