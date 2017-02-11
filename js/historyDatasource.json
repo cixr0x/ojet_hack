@@ -13,15 +13,33 @@
    "ABC1001":
     [
       {"id":1,"step":"Store","date":"10-Feb-2016 ","status":"success","description":"Order sent to CPQ"},
-      {"id":2,"step":"CPQ","date":"10-Feb-2016","status":"success","description":"Order arrived CPQ Number 897654"},
-      {"id":3,"step":"CPQ","date":"10-Feb-2016","status":"success","description":"Error assigning Order Number on GOM"}
+      {"id":2,"step":"CPQ","date":"11-Feb-2016","status":"success","description":"Order arrived CPQ Number 897654"},
+      {"id":3,"step":"CPQ","date":"12-Feb-2016","status":"error","description":"Error assigning Order Number on GOM"},
+      {"id":4,"step":"OM","date":"12-Feb-2016","status":"success","description":"Quote number created and sent to OM"},
+      {"id":5,"step":"OM","date":"12-Feb-2016","status":"success","description":"Order number created and booked, sent to TAS"},
+      {"id":6,"step":"TAS","date":"13-Feb-2016","status":"error","description":"Was not possible to process, sent to OM"},
+      {"id":7,"step":"OM","date":"13-Feb-2016","status":"success","description":"Changes were made, sent to TAS"},
+      {"id":8,"step":"TAS","date":"14-Feb-2016","status":"success","description":"Provisioning service"},
+      {"id":9,"step":"TAS","date":"15-Feb-2016","status":"success","description":"Provisioning service"},
+      {"id":10,"step":"TAS","date":"16-Feb-2016","status":"success","description":"Service provisioned, sent to OM"},
+      {"id":11,"step":"OM","date":"17-Feb-2016","status":"success","description":"Msj sent to SPM"},
+      {"id":12,"step":"SPM","date":"17-Feb-2016","status":"success","description":"Msj received, generating plan, going to queue"},
+      {"id":13,"step":"SPM","date":"18-Feb-2016","status":"error","description":"Necessary to have an approval, requesting approval, apply on hold status"},
+      {"id":14,"step":"SPM","date":"18-Feb-2016","status":"success","description":"Approval providaded. Generating the plan."},
+      {"id":15,"step":"SPM","date":"19-Feb-2016","status":"success","description":"Plan generated. Seding message to OIC and MOS"},
+      {"id":16,"step":"OIC","date":"19-Feb-2016","status":"success","description":"Message and payloads received"},
+      {"id":17,"step":"OIC","date":"19-Feb-2016","status":"success","description":"Message and payloads received"}
     ]
   ,
   "10015878":
     [
       {"id":1,"step":"Store","date":"10-Feb-2016 ","status":"success","description":"Order sent to CPQ"},
       {"id":2,"step":"CPQ","date":"10-Feb-2016","status":"success","description":"Order arrived CPQ Number 897654"},
-      {"id":1,"step":"CPQ","date":"10-Feb-2016","status":"success","description":"Order Numer 5676654 assigned"}
+      {"id":3,"step":"CPQ","date":"10-Feb-2016","status":"success","description":"Order Numer 5676654 assigned"},
+      {"id":4,"step":"OM","date":"10-Feb-2016","status":"success","description":"Order Numer 5676654 assigned"},
+      {"id":5,"step":"OM","date":"11-Feb-2016","status":"error","description":"Error processing information, quantities weren't correct. Changes requested"},
+      {"id":6,"step":"OM","date":"11-Feb-2016","status":"error","description":"Updates were received. Information wasn't correct. Changes requested."},
+      {"id":7,"step":"OM","date":"12-Feb-2016","status":"error","description":"Due date was completed, sending email to approver."}
     ],
     "10015989":
     [
