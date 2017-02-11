@@ -9,7 +9,7 @@ and open the template in the editor.
 
     <div id="demo-status" style="color: blue"></div>  
     
-    <input id="inputSearch" style="height: 70px; font-size: x-large" placeholder="Universal search..."
+    <input id="inputSearch" style="height: 120px; font-size: x-large;" placeholder="Universal search..."
         data-bind="ojComponent: {
             
             component: 'ojInputSearch',
@@ -51,7 +51,31 @@ and open the template in the editor.
     <!-- /ko -->
   </script>
 </div>
+
+<div id="tabs-container">
+  <div id="tabs" data-bind="ojComponent:{component: 'ojTabs', disabledTabs: [2]}">
+    <!-- tab bar -->
+    <ul>
+      <li><span>Recent</span></li>
+      <li><span>Favorites</span></li>
+    </ul>
+
+    <!-- tab contents -->
+    <div id="tabs-1">
+      <p>Tab 1 Content</p>
+    </div>
+    <div id="tabs-2">
+      <p>Tab 2 Content</p>
+    </div>
+  </div>
+</div>
+
+
+
+
 <!-- Recent tracked orders -->
+
+<!--
 <div id="RecentToggleSet" class="bottomButtons"
         data-bind="ojComponent: {component: 'ojButtonset',
         chroming: 'outlined'}">
@@ -66,7 +90,9 @@ and open the template in the editor.
    <h3>Recent tracked orders</h3>
 </div>
 
+-->
 <!-- Favourites tracked orders-->
+<!--
 <div id="favToggleSet" class="bottomButtons"
         data-bind="ojComponent: {component: 'ojButtonset',
         chroming: 'outlined'}">
@@ -80,3 +106,5 @@ and open the template in the editor.
 <div style="display:none;" id="fav-panel" class="oj-panel demo-mypanel bottomInfoDiv">
    <h3>Favourites tracked orders</h3>
 </div>
+
+-->
