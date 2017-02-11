@@ -22,12 +22,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         self.value = ko.observable("");
         
         self.value.subscribe(function(newval){
-            console.log(newval);
+            //console.log(newval);
             localStorage.setItem("searchVal", newval);
-            console.log("el valor  es" +localStorage.getItem("searchVal"));
+            //console.log("el valor  es" +localStorage.getItem("searchVal"));
             oj.Router.rootInstance.go('search_result');
             
-            console.log(document.searchResultViewModel);
+            //console.log("documentSearchResult " + document.searchResultViewModel);
             //document.SearchResultViewModel.loadData(newval);
         });
         

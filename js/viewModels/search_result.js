@@ -14,12 +14,16 @@ define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojse
     
     function SearchResultViewModel() {
       var self = this;
-      console.log("DAO : ");
-      console.log(dao);
       self.dataSource= ko.observableArray([]);
       
       self.value = ko.observable("");
       
+      self.value.subscribe(function(newval){
+            localStorage.setItem("searchVal", newval);
+            oj.Router.rootInstance.go('search_result');
+            self.loadData(newval);
+        });
+        
       self.itemOnly = function(context)
                     {
                         return context['leaf'];

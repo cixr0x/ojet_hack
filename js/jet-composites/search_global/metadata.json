@@ -6,7 +6,12 @@
     },
     "value": {
       "description": "Id of the component.",
-      "type": "string",
+      "type": "function",
+      "writeback": true
+    },
+    "fn": {
+      "description": "fn",
+      "type": "function",
       "writeback": true
     }
   }

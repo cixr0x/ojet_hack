@@ -19,6 +19,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         var self = this;
         
         self.searchValue = ko.observable("");
+        self.value =self.searchValue;
+        context.props.then(function(props){
+            console.log(props)
+            props.fn(self.value);
+            self.searchValue.subscribe(function(newValue){
+                props.fn(newValue);
+            })
+        });
         self.suggestions = function(context) {
           return new Promise(function(fulfill, reject) {
 

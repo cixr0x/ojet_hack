@@ -65,6 +65,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojcomposite', 'jet-composites/s
       self.handleDetached = function(info) {
         // Implement if needed
       };
+    self.test = ko.observable("test");
+    self.fn = function(data){
+        console.log(data)       
+        console.log(self.test())
+
+    }
     }
 
     /*
