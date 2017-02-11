@@ -15,7 +15,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojtrain', 'oj
      */
     function historyContentViewModel() {
         var self = this;        
-        var id = '10001001';
+        var id = localStorage.getItem("detailVal");
                      
         self.historyTitle = ko.observable("Subscription Plan 1000198");
         self.currentStepValue = ko.observable('stp3');

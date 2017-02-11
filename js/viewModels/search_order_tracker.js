@@ -38,10 +38,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
             var term = context.term;
 
-            $.getJSON("searchdata.json", function(data) {
+            $.getJSON("js/mainDatasource.json", function(data) {
               var opttys = [];
               var subs_plan = [];
               var general = [];
+              var invoice = [];
               $.each(data, function(key, value) { 
                   var obj = {
                         "id":value.id,
@@ -54,6 +55,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                       opttys.push(obj);
                   }else if(value.type === 'subscription_plan'){
                       subs_plan.push(obj);
+                  }else if(value.type === 'invoice'){
+                      invoice.push(obj);
                   }else{
                       general.push(obj);
                   }
@@ -61,28 +64,36 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
              
               var opportunities = {
                 groupId : "grp:opptys:" + term,
-                groupName : "OPPORTUNITIES",
-                totalResults : opttys.lenght,
+                groupName : "Opportunity",
+                totalResults : opttys.length,
                 items : opttys
               };
               
               var subs_planes = {
                 groupId : "grp:subs_plan:" + term,
-                groupName : "SUBSCRIPTIONS PLANS",
-                totalResults : subs_plan.lenght,
+                groupName : "Subscription Plan",
+                totalResults : subs_plan.length,
                 items : subs_plan
+              };
+              
+              var invoices = {
+                groupId : "grp:invoice:" + term,
+                groupName : "Invoice",
+                totalResults : invoice.length,
+                items : invoice
               };
               
               var generals = {
                 groupId : "grp:general:" + term,
-                groupName : "GENERALES",
-                totalResults : general.lenght,
+                groupName : "Other",
+                totalResults : general.length,
                 items : general
               };
               
               
               options.push(opportunities);
               options.push(subs_planes);
+              options.push(invoices);
               options.push(generals);
 
               fulfill(options);
