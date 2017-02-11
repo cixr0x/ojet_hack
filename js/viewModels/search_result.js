@@ -5,13 +5,14 @@
 /*
  * Your incidents ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojjsontreedatasource', 'ojs/ojbutton'],
- function(oj, ko, $) {
+define(['ojs/ojcore', 'knockout', 'jquery', './dao', 'ojs/ojknockout', 'ojs/ojlistview', 'ojs/ojjsontreedatasource', 'ojs/ojbutton'],
+ function(oj, ko, $, dao) {
   
     
     function SearchResultViewModel() {
       var self = this;
-      
+      console.log("DAO : ");
+      console.log(dao);
       self.dataSource= ko.observableArray([]);
       self.itemOnly = function(context)
                     {
@@ -22,7 +23,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
                         return bindingContext.$itemContext.leaf ? 'item_template' : 'group_template';
                     };
       
-      $.getJSON( "data.json", 
+     /* $.getJSON( "data.json", 
         function(data) 
             {
                 console.log("LOS DATA: ");
@@ -30,7 +31,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojlistview', 
                     self.dataSource(new oj.JsonTreeDataSource(data));
         
             });
-      
+      */
+     dao.getSeachResults("A", function(data) 
+            {
+                console.log("LOS DATA: ");
+                console.log(data);
+                    self.dataSource(new oj.JsonTreeDataSource(data));
+        
+            });
       
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additionaly available methods.
